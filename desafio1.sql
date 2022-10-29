@@ -11,6 +11,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
       client_name VARCHAR(100),
       client_age INT,
       plane_id INT NOT NULL,
+      client_signed DATETIME NOT NULL,
 	  CONSTRAINT FOREIGN KEY (plane_id) REFERENCES plane_table (plane_id)
   ) ENGINE = InnoDB;
 
@@ -30,6 +31,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
       music_id INT PRIMARY KEY AUTO_INCREMENT,
       music_name VARCHAR(100),
       album_id INT NOT NULL,
+      music_duration INT NOT NULL,
       CONSTRAINT FOREIGN KEY (album_id) REFERENCES album_table (album_id)
   ) ENGINE = InnoDB; 
 
@@ -57,18 +59,18 @@ DROP DATABASE IF EXISTS SpotifyClone;
        ('pessoal', 6.99),
        ('familiar', 7.99);
 
-   INSERT INTO SpotifyClone.client_table (client_name, client_age, plane_id)
+   INSERT INTO SpotifyClone.client_table (client_name, client_age, plane_id, client_signed)
      VALUES
-    ('Barbara Liskov', '82', 1),
-    ('Robert Cecil Martin', '58', 1),
-    ('Ada Lovelace', '37', 4),
-	('Martin Fowler', '46', 4),
-    ('Sandi Metz', '58', 4),
-    ('Paulo Freire', '19', 2),
-    ('Bell Hooks', '26', 2),
-    ('Christopher Alexander', '85', 3),
-    ('Judith Butler', '45', 3),
-	('Jorge Amado', '58', 3);
+    ('Barbara Liskov', '82', 1, '2019-10-20'),
+    ('Robert Cecil Martin', '58', 1, '2017-01-06'),
+    ('Ada Lovelace', '37', 4, '2017-12-30'),
+	('Martin Fowler', '46', 4, '2017-01-17'),
+    ('Sandi Metz', '58', 4, '2018-04-29'),
+    ('Paulo Freire', '19', 2, '2018-02-14'),
+    ('Bell Hooks', '26', 2, '2018-01-05'),
+    ('Christopher Alexander', '85', 3, '2019-06-05'),
+    ('Judith Butler', '45', 3, '2020-05-13'),
+	('Jorge Amado', '58', 3, '2017-02-17');
       
 	 INSERT INTO SpotifyClone.artists_table (artist_name, artist_id)
        VALUES 
@@ -90,18 +92,18 @@ DROP DATABASE IF EXISTS SpotifyClone;
       ('Somewhere Far Beyond', '5'),
       ('I Put A Spell On You', '6');
        
-	 INSERT INTO SpotifyClone.musics_table (music_name, album_id)
+	 INSERT INTO SpotifyClone.musics_table (music_name, album_id, music_duration)
        VALUES
-       ('Samba em Paris', 6),
-       ('Feeling Good', 8),
-       ('VIRGO’S GROOVE', 1),
-       ('O Medo de Amar é o Medo de Ser Livre', 5),
-       ('Under Pressure', 3),
-       ('BREAK MY SOUL', 1),
-       ('Don’t Stop Me Now', 2),
-       ('The Bard’s Song', 4),
-       ('ALIEN SUPERSTAR', 1),
-       ('Como Nossos Pais', 4);
+       ('Samba em Paris', 6, 267),
+       ('Feeling Good', 8, 100),
+       ('VIRGO’S GROOVE', 1, 369),
+       ('O Medo de Amar é o Medo de Ser Livre', 5, 207),
+       ('Under Pressure', 3, 152),
+       ('BREAK MY SOUL', 1, 279),
+       ('Don’t Stop Me Now', 2, 203),
+       ('The Bard’s Song', 4, 244),
+       ('ALIEN SUPERSTAR', 1, 116),
+       ('Como Nossos Pais', 4, 105);
        
 	 INSERT INTO SpotifyClone.historic_table (client_id, music_id, date)
        VALUES
@@ -139,5 +141,3 @@ DROP DATABASE IF EXISTS SpotifyClone;
         (9, 3),
         (10, 2);
         
-        SELECT * FROM SpotifyClone.album_table
-
