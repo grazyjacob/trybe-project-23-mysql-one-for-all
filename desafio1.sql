@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
   CREATE TABLE SpotifyClone.plane_table (
       plane_name VARCHAR(100),
       plane_id INT PRIMARY KEY AUTO_INCREMENT,
-      plane_value INT
+      plane_value  DECIMAL(10,2)
   ) ENGINE = InnoDB;
 
   CREATE TABLE SpotifyClone.client_table (
